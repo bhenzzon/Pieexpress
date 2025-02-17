@@ -231,13 +231,18 @@
                 background-size: cover;
                 }
                  .photo-background h2 {
-                  font-family: 'Poppins', sans-serif;
-                  font-size: 50px; /* Increased size */
-                  /* No color property, so it retains the original color */
-                  z-index: 2;
-                  margin: 0;
-                  padding-top: 50px; /* Adjust spacing as needed */
-                  color: #FFC107;
+                  position: absolute;
+                top: 13%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #FFC107;
+                padding: 12px 20px;
+                font-size: 70px;
+                font-weight: 600;
+                border-radius: 5px;
+                text-decoration: none;
+                z-index: 2; 
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                 }
                 .photo-background .overlay {
                 position: absolute;
@@ -251,7 +256,7 @@
 
                 .order-now-overlay2 {
                 position: absolute;
-                top: 60%;
+                top: 70%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 background-color: #FFC107;
