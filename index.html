@@ -180,40 +180,40 @@
             }
 
             .menu {
-    display: flex;
-    justify-content: center; /* Centers the items horizontally */
-    gap: 70px; /* Adds space between items */
-    list-style: none;
-    padding: 0;
-}
+                display: flex;
+                justify-content: center; /* Centers the items horizontally */
+                gap: 70px; /* Adds space between items */
+                list-style: none;
+                padding: 0;
+            }
 
-.menu li {
-    display: flex;
-    flex-direction: column; /* Stacks image & text */
-    align-items: center;
-}
+            .menu li {
+                display: flex;
+                flex-direction: column; /* Stacks image & text */
+                align-items: center;
+            }
 
-/* Make the whole item clickable */
-.menu-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-}
+            /* Make the whole item clickable */
+            .menu-link {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: #333;
+                font-size: 18px;
+            }
 
-.menu-icon {
-    width: 50px; 
-    height: 50px;
-    margin-bottom: 5px; /* Adds space between icon & text */
-}
+            .menu-icon {
+                width: 50px; 
+                height: 50px;
+                margin-bottom: 5px; /* Adds space between icon & text */
+            }
 
-/* Hover effect */
-.menu-link:hover {
-    color: #013220; /* Dark Green */
-    font-weight: bold;
-}
+            /* Hover effect */
+            .menu-link:hover {
+                color: #013220; /* Dark Green */
+                font-weight: bold;
+            }
             /* General Styles */
             #services {
                 padding-bottom: 60px;
@@ -230,8 +230,8 @@
             }
 
             /* Carousel Styles (Left Side) */
-          /* Adjust the gap and position of Featured Food */
-/* Adjust margin-top to reduce the gap */
+           /* Adjust the gap and position of Featured Food */
+            /* Adjust margin-top to reduce the gap */
             .slider_wrap {
                 margin-top: 10px; /* Reduced from 20px */
                 margin-left: 20px; /* Moves Featured Food to the right */
@@ -441,10 +441,100 @@
                 font-size: 24px;
                 text-decoration: none;
               }
-
-
-
-
+              .chatbox {
+                width: 400px;
+                height: 400px;
+                border: 1px solid #ccc;
+                display: none;
+                flex-direction: column;
+                justify-content: space-between;
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                background: white;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                z-index: 2;
+            }
+            .chatbox-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background: darkgreen;
+                color: white;
+                font-weight: bold;
+            }
+            .close-button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .messages {
+                flex: 1;
+                padding: 10px;
+                overflow-y: auto;
+            }
+            .input-box {
+                display: flex;
+                padding: 10px;
+                border-top: 1px solid #ccc;
+            }
+            .input-box input {
+                flex: 1;
+                padding: 5px;
+            }
+            .input-box button {
+                padding: 5px 10px;
+                background: darkgreen;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .chat-button {
+                position: fixed;
+                top: 90%;
+                right: 20px;
+                background: darkgreen;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                z-index: 2;
+            }
+            .suggested-messages {
+                padding: 10px;
+                border-top: 1px solid #ccc;
+                background: #f1f1f1;
+            }
+            .suggested-messages button {
+                background: lightgray;
+                border: none;
+                padding: 5px;
+                margin: 2px;
+                cursor: pointer;
+            }
+            .message-container {
+                display: flex;
+                flex-direction: column;
+            }
+            .user-message {
+                align-self: end;
+                background: lightgreen;
+                padding: 5px;
+                border-radius: 5px;
+                margin: 2px 0;
+            }
+            .bot-message {
+                align-self: flex-start;
+                background: lightgray;
+                padding: 5px;
+                border-radius: 5px;
+                margin: 2px 0;
+            }
     </style>
 </head>
 <body>
@@ -531,6 +621,25 @@
                   </li>
               </ul>
         </div>
+        <button class="chat-button" onclick="toggleChatbox()">Chat</button>
+        <div class="chatbox" id="chatbox">
+            <div class="chatbox-header">
+                Pie Express
+                <button class="close-button" onclick="toggleChatbox()">---</button>
+            </div>
+            <div class="messages" id="messages"></div>
+            <div class="suggested-messages">
+                <button onclick="quickMessage('Hello')">Hello</button>
+                <button onclick="quickMessage('How to order?')">How to order?</button>
+                <button onclick="quickMessage('I want to order')">I want to order</button>
+                <button onclick="quickMessage('Price')">Price</button>
+            </div>
+            <div class="input-box">
+                <input type="text" id="userInput" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
         <section id="services" class="padding-bottom">
             <div class="container">
               <div class="row">
@@ -714,6 +823,50 @@
 
         console.log("Carousel initialized."); // Debugging line
          });
+
+         function toggleChatbox() {
+            let chatbox = document.getElementById('chatbox');
+            chatbox.style.display = chatbox.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            let input = document.getElementById('userInput');
+            let message = input.value.trim();
+            if (message !== '') {
+                appendMessage("You", message, "user-message");
+                input.value = '';
+                setTimeout(() => botReply(message), 1000);
+            }
+        }
+
+        function quickMessage(text) {
+            document.getElementById('userInput').value = text;
+            sendMessage();
+        }
+
+        function botReply(userMessage) {
+            let responses = {
+                "hello": "Hi there! How can I help you?",
+                "how to order?": "You can place an order through our website! https://pieexpressph.storehub.me/",
+                "i want to order": "You can place an order through our website! https://pieexpressph.storehub.me/",
+                "order": "You can place an order through our website! https://pieexpressph.storehub.me/",
+                "price": "Our prices vary depending on the item. Check our menu!",
+                "thanks": "It's our pleasure to serve you.",
+                "default": "I'm not sure about that. Can you rephrase?"
+            };
+            
+            let reply = responses[userMessage.toLowerCase()] || responses["default"];
+            appendMessage("Pie", reply, "bot-message");
+        }
+
+        function appendMessage(sender, message, className) {
+            let messagesDiv = document.getElementById('messages');
+            let newMessage = document.createElement('div');
+            newMessage.className = className;
+            newMessage.textContent = sender + ": " + message;
+            messagesDiv.appendChild(newMessage);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
 
 
       
