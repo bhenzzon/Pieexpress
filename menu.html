@@ -81,7 +81,7 @@
 
         .carousel-container {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 3.0s ease-in-out;
             height: 100%;
         }
 
@@ -320,55 +320,55 @@
             }
 
             .branch_widget {
-              list-style: none;
-              padding: 0;
-              display: flex;
-              flex-wrap: wrap; /* Ensures responsiveness */
-              justify-content: center; /* Centers items horizontally */
-              gap: 20px; /* Space between branches */
-          }
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap; /* Ensures responsiveness */
+                justify-content: flex-start; /* Aligns items to the left */
+                gap: 20px; /* Space between branches */
+            }
 
-          .branch_widget li {
-              font-size: 18px;
-              color: #333;
-              display: flex;
-              align-items: center;
-              background-color: #f9f9f9;
-              padding: 10px 15px;
-              border-radius: 8px;
-              width: 100%;
-              max-width: 400px; /* Limits width per row item */
-              justify-content: center; /* Centers text inside the item */
-          }
+            .branch_widget li {
+                font-size: 18px;
+                color: #333;
+                display: flex;
+                align-items: left;
+                background-color: #f9f9f9;
+                padding: 10px 150px;
+                border-radius: 8px;
+                width: 100%;
+                max-width: 600px; /* Limits width per row item */
+                justify-content: flex-start; /* Aligns text inside the item to the left */
+            }
 
-          .branch_widget li a {
-              display: flex;
-              align-items: center;
-              text-decoration: none;
-              color: #013220;
-              font-weight: bold;
-              justify-content: left; /* Centers content inside the link */
-          }
+            .branch_widget li a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #013220;
+                font-weight: bold;
+                justify-content: flex-start; /* Aligns content inside the link to the left */
+            }
 
-          .location-icon {
-              width: 20px;
-              height: auto;
-              margin-right: 10px; /* Space between icon and text */
-              align-items: left;
-          }
+            .location-icon {
+                width: 20px;
+                height: auto;
+                margin-right: 20px; /* Space between icon and text */
+                align-items: flex-start;
+            }
 
-          /* Responsive Design */
-          @media (max-width: 768px) {
-              .branch_widget {
-                  flex-direction: column; /* Stack items on small screens */
-                  gap: 10px;
-              }
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .branch_widget {
+                    flex-direction: column; /* Stack items on small screens */
+                    gap: 10px;
+                }
 
-              .branch_widget li {
-                  max-width: 100%;
-              }
-          }
-    #footer {
+                .branch_widget li {
+                    max-width: 100%;
+                }
+            }
+              #footer {
                 background-color: #013220;
                 color: #fff;
                 padding: 40px 20px;
@@ -419,14 +419,14 @@
                 text-decoration: none;
               }
               .chatbox {
-                width: 300px;
-                height: 400px;
+                width: 400px;
+                height: 450px;
                 border: 1px solid #ccc;
                 display: none;
                 flex-direction: column;
                 justify-content: space-between;
                 position: fixed;
-                top: 50%;
+                top: 40%;
                 right: 20px;
                 background: white;
                 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -490,29 +490,33 @@
             .suggested-messages button {
                 background: lightgray;
                 border: none;
-                padding: 5px;
+                padding: 5px 15px;
                 margin: 2px;
                 cursor: pointer;
             }
             .message-container {
                 display: flex;
                 flex-direction: column;
+            
             }
             .user-message {
-                align-self: end;
+                justify-self: flex-end;
                 background: lightgreen;
                 padding: 5px;
                 border-radius: 5px;
-                margin: 2px 0;
+                margin: 30px 100px;
+                display: flex;
+                margin-right: -5px;
             }
             .bot-message {
-                align-self: flex-start;
+                 justify-self: flex-start;
                 background: lightgray;
                 padding: 5px;
                 border-radius: 5px;
-                margin: 2px 0;
+                margin: 15px 0;
+                margin-right: 50px;
+                display: flex;
             }
-
   </style>
 </head>
 <body>
@@ -709,7 +713,7 @@
               <div class="row">
                 <!-- Carousel Section: Left Side -->
                 <div class="col-md-4">
-                   <h2 class="heading">Our Store Location</h2>
+                   <h2 class="heading">Our Store Locations</h2>
                    <hr class="heading_space">
                    <div class="slider_wrap">
                      <div id="service-slider" class="owl-carousel">
@@ -718,7 +722,7 @@
                            <div class="image">
                              <img src="img/loc1.jpg" alt="Featured Food 1">
                            </div>
-                           <h3>Hamonado Pie</h3>
+                           <h3>Our Location</h3>
                            <p>Enjoy Delicious Food!</p>
                          </div>
                        </div>
@@ -727,7 +731,7 @@
                            <div class="image">
                              <img src="img/loc2.jpg" alt="Featured Food 2">
                            </div>
-                           <h3>Ham and Cheese Pie</h3>
+                           <h3>Shell SLEX</h3>
                            <p>Enjoy Delicious Food!</p>
                          </div>
                        </div>
@@ -736,7 +740,7 @@
                            <div class="image">
                              <img src="img/loc3.jpg" alt="Featured Food 3">
                            </div>
-                           <h3>Original Pie</h3>
+                           <h3>Pamplona 3</h3>
                            <p>Enjoy Delicious Food!</p>
                          </div>
                        </div>
@@ -745,7 +749,7 @@
                            <div class="image">
                              <img src="img/loc4.jpg" alt="Featured Food 4">
                            </div>
-                           <h3>Classic Pie</h3>
+                           <h3>SM Southmall</h3>
                            <p>Enjoy Delicious Food!</p>
                          </div>
                        </div>
@@ -754,7 +758,7 @@
                            <div class="image">
                              <img src="img/loc5.jpg" alt="Featured Food 4">
                            </div>
-                           <h3>Classic Pie</h3>
+                           <h3>Festival Mall</h3>
                            <p>Enjoy Delicious Food!</p>
                          </div>
                        </div>
@@ -764,7 +768,7 @@
           
                 <!-- Menu Section: Right Side -->
                 <div class="col-md-8">
-    <h2 class="heading">Branches</h2>
+    <h2 class="heading" class="fas">Google Map</h2>
     <hr class="heading_space">
     <ul class="branch_widget">
         <li>
@@ -844,7 +848,7 @@
             index = (index - 1 + slides.length) % slides.length;
             showSlide(index);
         }
-        setInterval(nextSlide, 3000);
+        setInterval(nextSlide, 5000);
         showSlide(index);
         window.addEventListener("scroll", function() {
             document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
